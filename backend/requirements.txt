@@ -1,0 +1,8 @@
+# I guess this is the equivalent to package.json maybe?
+
+fastapi
+uvicorn
+pydantic
+pandas
+numpy
+sentence-transformers
