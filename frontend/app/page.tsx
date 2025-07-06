@@ -1,4 +1,4 @@
-import Image from "next/image";
+'use client'
 
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
 
                   <div className="flex items-center justify-center mt-8 space-x-5 xl:mt-16 lg:justify-start">
                       <a
-                          href="#"
+                          href="/recommender"
                           title=""
                           className="
                               inline-flex

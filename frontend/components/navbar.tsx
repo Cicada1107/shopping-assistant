@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Navbar() {
     return (
@@ -7,23 +8,25 @@ export default function Navbar() {
                 <div className="px-4 mx-auto sm:px-6 lg:px-8 xl:px-12">
                     <div className="flex items-center justify-between h-16 lg:h-[72px]">
                         <div className="flex items-center flex-shrink-0">
-                            <a href="#" title="" className="inline-flex">
+                            <Link href="/" className="inline-flex">
                                 <Image
-                                    src="logo.svg"
+                                    src="/logo.svg"
                                     alt="logo"
                                     width={32}
                                     height={32}    
                                 />
                                 <span className="text-white font-bold tracking-tight p-3">Shop.ly</span>
-                            </a>
+                            </Link>
                         </div>
 
                         <div className="hidden lg:flex lg:justify-center lg:space-x-10 xl:space-x-14">
-                            <a href="#" title="" className="text-base font-medium text-gray-400 transition-all duration-200 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white hover:text-white"> Recommender </a>
+                            <Link href="/recommender" className="text-base font-medium text-gray-400 transition-all duration-200 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white hover:text-white">
+                                Recommender
+                            </Link>
 
-                            <a href="#" title="" className="text-base font-medium text-gray-400 transition-all duration-200 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white hover:text-white"> Features </a>
+                            <a href="#" className="text-base font-medium text-gray-400 transition-all duration-200 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white hover:text-white"> Features </a>
 
-                            <a href="#" title="" className="text-base font-medium text-gray-400 transition-all duration-200 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white hover:text-white"> Documentation </a>
+                            <a href="#" className="text-base font-medium text-gray-400 transition-all duration-200 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white hover:text-white"> Documentation </a>
                         </div>
 
                         <div className="flex items-center justify-end space-x-5">

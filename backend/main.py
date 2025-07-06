@@ -1,6 +1,5 @@
 #Fast API entry point - the api backend endpoint
 #using uvicorn for running the fastAPI server
-
 #When you install FastAPI, it comes with a production server, Uvicorn, and you can start it with the fastapi run command. But you can also install an ASGI server  - source: fastapi docs 
 
 from fastapi import FastAPI
@@ -9,8 +8,6 @@ from typing import List, Optional
 from recommender import recommend_products
 
 app = FastAPI()
-
-#Note that pydantic is the python request and response handler lib
 
 #input schema
 class RecommendationRequest(BaseModel):
