@@ -1,4 +1,7 @@
 #Fast API entry point - the api backend endpoint
+#using uvicorn for running the fastAPI server
+
+#When you install FastAPI, it comes with a production server, Uvicorn, and you can start it with the fastapi run command. But you can also install an ASGI server  - source: fastapi docs 
 
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -44,3 +47,19 @@ def recommend(req: RecommendationRequest):
         top_k=req.top_k
     )
     return results
+
+
+'''
+To run: uvicorn main:app --reload
+then visit: http://localhost:8000/docs
+There you'll find Swagger UI — test the /recommend_products endpoint interactively.
+
+sample request payload:
+{
+"query": "lightweight energy-saving smart bulb",
+"category": "Electronics",
+"budget": [10, 50],
+"brands": ["AduroSmart ERIA", "Philips"],
+"top_k": 5
+}
+'''
