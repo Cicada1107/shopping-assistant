@@ -1,6 +1,6 @@
 #Fast API entry point - the api backend endpoint
 #using uvicorn for running the fastAPI server
-#When you install FastAPI, it comes with a production server, Uvicorn, and you can start it with the fastapi run command. But you can also install an ASGI server  - source: fastapi docs 
+#When you install FastAPI, it comes with a production server, Uvicorn, and you can start it with the fastapi run command. But you can also install an ASGI server - source: fastapi docs 
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
