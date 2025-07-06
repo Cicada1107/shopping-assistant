@@ -18,5 +18,5 @@ def embed_texts(texts):
 def recommend_products(user_query, category=None, budget_range=None, preferred_brands=None, top_k=5):
     df = load_data()
 
-    #apply filters
+    #apply filters first
     
