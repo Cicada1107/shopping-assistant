@@ -3,11 +3,25 @@
 #When you install FastAPI, it comes with a production server, Uvicorn, and you can start it with the fastapi run command. But you can also install an ASGI server  - source: fastapi docs 
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
 from recommender import recommend_products
 
 app = FastAPI()
+#cors settings
+origins = [
+    "http://localhost:3000",  # next js frontend url
+    "*" #all - remove before pushing to production
+]
+
+app.add_middleware(
+       CORSMiddleware,
+       allow_origins=origins,
+       allow_credentials=True,
+       allow_methods=["*"],  # Allow all HTTP methods
+       allow_headers=["*"],  # Allow all headers
+   )
 
 #input schema
 class RecommendationRequest(BaseModel):
@@ -16,7 +30,6 @@ class RecommendationRequest(BaseModel):
     budget: Optional[List[float]] = None  # [min, max]
     brands: Optional[List[str]] = None
     top_k: Optional[int] = 5
-
 
 
 # Output schema
