@@ -38,6 +38,12 @@ Filter product catalog (CSV or database) by:
     - category match
     - price within budget
     - optionally: in-stock flag
+Kaggle acquired csv data file type mapping with our example:
+    - Product Name → title
+    - Brand → brand
+    - Sale Price → price
+    - Description → features
+    - Category → category
 
 ### PHASE 3: ML-Powered Recommendation Logic
 
