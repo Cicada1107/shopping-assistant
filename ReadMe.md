@@ -85,3 +85,6 @@ Kaggle acquired csv data file type mapping with our example:
 - Optional:
   - Toggle to show match % or explanations
   - Include a “Refine Your Search” panel to update inputs and re-run.
+---
+
+## Usage Instructions
