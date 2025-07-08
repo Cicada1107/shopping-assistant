@@ -88,3 +88,26 @@ Kaggle acquired csv data file type mapping with our example:
 ---
 
 ## Usage Instructions
+
+  -- git clone (kar lena jaise bhi)
+  -- from the root directory, go to the backend directory
+  -- there, set up virual env using python's built "venv" library (use google/chatgpt/[`Python Venv Docs`](https://docs.python.org/3/library/venv.html)
+  -- install all dependencies:  (you should have pip installed along with python and all)
+  ```bash
+  pip install -r requirements.txt
+  ```
+  -- now go to the frontend directory and install the dependencies there using:
+  ```bash
+  npm install
+  ```
+  -- Run the backend and the frontend servers (they will by default run on two different ports: backend on 8000 & frontend on 3000)
+  -- do this by opening two seperate terminal instances, and cd to frontend and backend respectively.
+  -- for backend, run: 
+  ```bash
+  uvicorn main:app --reload
+  ```
+  -- for frontend:
+  ```bash
+  npm run dev
+  ```
+  -- Now go to localhost 8000 and do whatever you want
