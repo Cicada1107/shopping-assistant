@@ -1,33 +1,35 @@
+#Fast API entry point - the api backend endpoint
+#using uvicorn for running the fastAPI server
+#When you install FastAPI, it comes with a production server, Uvicorn, and you can start it with the fastapi run command. But you can also install an ASGI server - source: fastapi docs 
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
-from recommender import recommend_products, recommend_products_gpt
+from recommender import recommend_products
 
 app = FastAPI()
-
-# Allow frontend (e.g. Next.js at localhost:3000)
+#cors settings
 origins = [
-    "http://localhost:3000",
-    "*"  # Allow all during development — remove in production!
+    "http://localhost:3000",  # next js frontend url
+    "*" #all - remove before pushing to production
 ]
 
 app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+       CORSMiddleware,
+       allow_origins=origins,
+       allow_credentials=True,
+       allow_methods=["*"],  # Allow all HTTP methods
+       allow_headers=["*"],  # Allow all headers
+   )
 
-# Input schema
+#input schema
 class RecommendationRequest(BaseModel):
     query: str
     category: Optional[str] = None
     budget: Optional[List[float]] = None  # [min, max]
     brands: Optional[List[str]] = None
     top_k: Optional[int] = 5
-    use_gpt: Optional[bool] = False  # 🧠 Use OpenAI GPT if true
 
 
 # Output schema
@@ -36,8 +38,8 @@ class ProductOut(BaseModel):
     price: float
     brand: str
     features: str
-    similarity: Optional[float] = None  # Will be None for GPT results
-    score: Optional[float] = None       # Will be None for GPT results
+    similarity: float
+    score: float
 
 
 @app.get("/")
@@ -47,18 +49,27 @@ def root():
 
 @app.post("/recommend_products", response_model=List[ProductOut])
 def recommend(req: RecommendationRequest):
-    if req.use_gpt:
-        # Use GPT-based recommendations
-        return recommend_products_gpt(
-            user_query=req.query,
-            top_k=req.top_k
-        )
-    
-    # Use classic sentence-transformer + filters
-    return recommend_products(
+    results = recommend_products(
         user_query=req.query,
         category=req.category,
         budget_range=req.budget,
         preferred_brands=req.brands,
         top_k=req.top_k
     )
+    return results
+
+
+'''
+To run: uvicorn main:app --reload
+then visit: http://localhost:8000/docs
+There you'll find Swagger UI — test the /recommend_products endpoint interactively.
+
+sample request payload:
+{
+"query": "lightweight energy-saving smart bulb",
+"category": "Electronics",
+"budget": [10, 50],
+"brands": ["AduroSmart ERIA", "Philips"],
+"top_k": 5
+}
+'''
