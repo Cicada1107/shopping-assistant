@@ -60,9 +60,9 @@ def recommend(req: RecommendationRequest):
 
 
 '''
+Install all dependencies for backend: pip install -r requirements.txt
 To run: uvicorn main:app --reload
-then visit: http://localhost:8000/docs
-There you'll find Swagger UI — test the /recommend_products endpoint interactively.
+
 
 sample request payload:
 {
