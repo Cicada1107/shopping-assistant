@@ -1,13 +1,13 @@
 import pandas as pd
 import numpy as np
 from sentence_transformers import SentenceTransformer, util
-import openai
+from openai import OpenAI
 import os
 from dotenv import load_dotenv
 
 # Load environment variables (for OPENAI_API_KEY)
 load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Load SentenceTransformer model for traditional recommendation
 model = SentenceTransformer("all-MiniLM-L6-v2")
@@ -103,14 +103,15 @@ Do not explain anything — just return JSON list.
 """
 
     try:
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",  # or "gpt-4" if available
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",  # or "gpt-4" if you're using that
             messages=[{"role": "user", "content": prompt}],
             temperature=0.7,
             max_tokens=1000
         )
-        content = response['choices'][0]['message']['content']
+        content = response.choices[0].message.content
         return eval(content) if isinstance(content, str) else content
     except Exception as e:
         print("OpenAI error:", e)
         return []
+

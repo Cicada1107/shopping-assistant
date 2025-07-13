@@ -6,3 +6,5 @@ pydantic
 pandas
 numpy
 sentence-transformers
+openai
+dotenv
