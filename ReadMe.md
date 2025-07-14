@@ -1,5 +1,7 @@
 # 🧠 ML-Powered Product Recommendation System
 
+Current Prototype Demo (14/07/25): [`Youtube Link`](https://youtu.be/-1ZuK2O1SSk)
+
 This project delivers personalized product recommendations based on user preferences, powered by natural language understanding and semantic similarity using Sentence Transformers.
 
 ## Flow/Core working:
