@@ -52,7 +52,7 @@ Kaggle acquired csv data file type mapping with our example:
 - **Preprocess all filtered product entries:**
   - Combine product title + features/description into a text string.
 
-- **Use SentenceTransformer (e.g. all-MiniLM-L6-v2):**
+- **Use SentenceTransformer (all-MiniLM-L6-v2):**
   - Encode user query to vector (1x384)
   - Encode each product’s description to vector (Nx384)
 
