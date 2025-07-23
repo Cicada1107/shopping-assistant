@@ -84,9 +84,6 @@ Kaggle acquired csv data file type mapping with our example:
   - Show top N recommendations
   - For each card: product image, title, price, badge (why we picked this)
 
-- Optional:
-  - Toggle to show match % or explanations
-  - Include a “Refine Your Search” panel to update inputs and re-run.
 ---
 
 ## Usage Instructions
